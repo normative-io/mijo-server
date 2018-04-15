@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
@@ -54,4 +54,7 @@ MijoMessageSchema.index({ timestamp: 1 });
 /**
  * @typedef MijoMessage
  */
-export default mongoose.model('MijoMessage', MijoMessageSchema);
+// export default mongoose.model('MijoMessage', MijoMessageSchema);
+const MijoMessage = mongoose.model('MijoMessage', MijoMessageSchema);
+
+module.exports = MijoMessage;
