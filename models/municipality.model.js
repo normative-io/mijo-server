@@ -6,15 +6,15 @@ const Schema = mongoose.Schema;
  * This template is used for all messages sent to and from the Mijo client.
  */
 const MunicipalitySchema = new Schema({
-  type: {type: String, required: true},
+  type: { type: String, required: true },
   geometry: {
-    type: {type: String, required: true},
-    coordinates: { Schema.Types.Mixed, required: true}
+    type: { type: String, required: true },
+    coordinates: { type: Schema.Types.Mixed, required: true }
   },
   properties: {
-    KNKOD: {type: Number, required: true},
-    KNNAMN: {type: String, required: true},
-    FeatureID: {type: Number, required: true}
+    KNKOD: { type: Number, required: true },
+    KNNAMN: { type: String, required: true },
+    FeatureID: { type: Number, required: true }
   }
 });
 
