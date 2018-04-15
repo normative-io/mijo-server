@@ -11,7 +11,7 @@ function get(req, res) {
 
 function create(req, res) {
   let newMsg = req.body;
-  if (newMsg) {
+  if (!newMsg) {
     newMsg = {
       question: {
         title: 'testtitle',
