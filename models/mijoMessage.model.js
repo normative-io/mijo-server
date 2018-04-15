@@ -78,14 +78,14 @@ MijoMessageSchema.statics = {
    */
   list({ skip = 0, limit = 50 } = {}) {
     return this.find()
-      .sort({ createdAt: -1 })
+      .sort({ timestamp: -1 })
       .skip(+skip)
       .limit(+limit)
       .exec();
   }
 };
 
-MijoMessageSchema.index({ timestamp: 1 });
+MijoMessageSchema.index({ timestamp: -1 });
 
 /**
  * @typedef MijoMessage
