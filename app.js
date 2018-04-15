@@ -35,6 +35,7 @@ const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
 const mijoMessageController = require('./controllers/mijoMessage.controller');
+const municipalityController = require('./controllers/municipality.controller');
 
 /**
  * API keys and Passport configuration.
@@ -171,6 +172,8 @@ app.post('/api/pinterest', passportConfig.isAuthenticated, passportConfig.isAuth
 app.get('/api/google-maps', apiController.getGoogleMaps);
 app.get('/api/mijoMessages', mijoMessageController.list);
 app.post('/api/mijoMessages', mijoMessageController.create);
+
+app.put('/api/muncipalities', municipalityController.getByCoordinates);
 
 /**
  * OAuth authentication routes. (Sign in)
