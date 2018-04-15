@@ -49,6 +49,42 @@ const MijoMessageSchema = new Schema({
   timestamp: { type: Date, required: true, default: new Date() },
 });
 
+/**
+ * Statics
+ */
+MijoMessageSchema.statics = {
+  /**
+   * Get post
+   * @param {ObjectId} id - The objectId of post.
+   * @returns {Promise<Post, APIError>}
+   */
+  get(id) {
+    return this.findById(id)
+      .exec()
+      .then((post) => {
+        if (post) {
+          return post;
+        }
+        const err = new Error('No such MijoMessage exists!');
+        return Promise.reject(err);
+      });
+  },
+
+  /**
+   * List posts in descending order of 'createdAt' timestamp.
+   * @param {number} skip - Number of posts to be skipped.
+   * @param {number} limit - Limit number of posts to be returned.
+   * @returns {Promise<Post[]>}
+   */
+  list({ skip = 0, limit = 50 } = {}) {
+    return this.find()
+      .sort({ createdAt: -1 })
+      .skip(+skip)
+      .limit(+limit)
+      .exec();
+  }
+};
+
 MijoMessageSchema.index({ timestamp: 1 });
 
 /**
